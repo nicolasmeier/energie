@@ -19,6 +19,7 @@
   "author": "Nicolas Meier",
   "license": "Apache-2.0",
   "dependencies": {
+    "prompt": "^1.0.0",
     "webdriverio": "^4.8.0"
   },
   "devDependencies": {

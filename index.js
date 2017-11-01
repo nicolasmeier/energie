@@ -142,6 +142,7 @@ function getAnswer(question){
 
 
 async function solveQuestion(){
+    alert("Test");
     while ( await client.isExisting('form.question h1')) {
         //console.log('question start');
         await client
@@ -196,15 +197,38 @@ async function hopeAndPray(){
 }
 
 async function startGame(){
-    while(true){
         await client.init()
             .url('http://game.energy.ch/')
-            .setValue('#mobile', settings.phoneNumber)
-            .click('#go')
-            .then(solveQuestion);
+            .setValue('#inlineFormInput', settings.phoneNumber)
+            .click('.form-inline .game-button')
+            .then(promptSMSCode).then(solveQuestion);
 
         await client.end();
-    }
 }
+
+async function promptSMSCode(){
+
+    var code = "";
+    var prompt = require('prompt');
+
+    //
+    // Start the prompt
+    //
+    prompt.start();
+
+    //
+    // Get two properties from the user: username and email
+    //
+    prompt.get(['smsCode'], function (err, result) {
+      //
+      // Log the results.
+      //
+      console.log('Command-line input received:');
+      console.log('  smsCode: ' + result.smsCode);
+      client.setValue(".mobile-input .form-control",result.smsCode);
+    });
+}
+
+
 
 startGame();
