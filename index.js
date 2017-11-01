@@ -5,6 +5,36 @@ var options = { desiredCapabilities: { browserName: 'chrome' } };
 var client = webdriverio.remote(options);
 // ------------------
 
+// november valuemap, predefined key - value map
+var novQuestionsEnum = {
+    'Wann startet JUSTICE LEAGUE im Kino?': '16. November',
+    'Nachdem sie ihr Debut als Wonder Woman / Diana Prince in BATMAN V SUPERMAN: DAWN OF JUSTICE feierte, kehrt sie nun als Amazonen-Kriegerin in JUSTICE LEAGUE zurück auf die Leinwand. Von wem ist die Rede?': 'Gal Gadot',
+    'Welcher maskierte Act war vor zwei Jahren an der Energy Star Night dabei?': 'Cro',
+    'In welchen 3 Städten findest du unsere Radiostudios?': 'Zürich, Bern und Basel',
+    'In welchem Element fühlt sich dieser Superheld am Wohlsten?': 'Im Wasser',
+    'Wie oft stand der Schweizer Act Bligg bereits auf der Energy Star Night Bühne?': '6',
+    'In JUSTICE LEAGUE kehrt er als Batman / Bruce Wayne zurück auf die Leinwand, nachdem er die Rolle bereits in BATMAN V SUPERMAN: DAWN OF JUSTICE übernahm. Von wem ist die Rede?': 'Ben Affleck',
+    'Unter welchem Motto findet die diesjährigen Energy Star Night statt?': 'Jungle',
+    'In welchem Jahr fand die erste Ausgabe des Energy Stars For Free statt?': '2003',
+    'Welcher Superheld trägt einen Blitz auf seiner Brust?': 'Flash',
+    'Welche zwei Schweizer Acts performten 2016 gemeinsam auf der Energy Star Night Bühne?': 'Bligg und Stress',
+    'Wie viele Tickets werden jeweils für die Energy Star Night verlost?': '13000',
+    'Wie hiess die Energy Star Night bevor sie im Jahr 2016 umbenannt wurde?': 'Energy Stars For Free',
+    'Was zeichnet Flash aus?': 'Er ist schnell wie der Blitz',
+    'Welcher Preis wird an der Energy Star Night vergeben?': 'Best Swiss Music Award',
+    'Sunrise Avenue wird das Publikum an der diesjährigen Energy Star Night mitreissen. In welchen Jahren performten sie bereits an der Energy Star Night?': '2006 und 2011',
+    'Was zeichnet Cyborg aus?': 'Er hat einen mechanisch verbesserten Körper',
+    'Wie viele Acts standen 2016 auf der Energy Star Night Bühne?': '15',
+    'Zum wievielten Mal findet die Energy Star Night statt?': '15',
+    'Wie heisst dieser Superheld?': 'Cyborg',
+    'Wie heisst dieser Superheld?': 'Aquaman',
+    'Wie heisst diese Superheldin?': 'Wonder Woman',
+    'Auf welchem dieser Portale kann man keine Tickets gewinnen': 'ticketcorner.ch',
+    'Wo findet die Energy Star Night statt?': 'Hallenstadion (Zürich)',
+    'Was für Acts spielen jeweils auf der Bühne der Energy Star Night?': 'Internationale und nationale Stars',
+    'Welcher dieser Superhelden kommt NICHT im Trailer vor?': 'Superman',
+    'Man kennt ihn auch als Bruce Wayne, doch wie ist sein Superheld-Name?': 'Batman',
+};
 
 
 // predefined key - value map
@@ -47,9 +77,9 @@ var valueMap = {
     'Welches Stadion ist das grösste der Schweiz?': 1,                                                      // 36
     'Wann ist die offizielle Türöffnung beim Energy Air?': 1,                                               // 37
     'Wie viele Tickets werden für das Energy Air verlost?': 1,                                              // 38
-    'In welcher Schweizer Stadt hat Energy KEIN Radiostudio?': 3,                                           // 39   
-    'Welcher Act stand schon einmal auf der Energy Bühne?': 1,                                              // 40    
-    'Wann fand das Energy Air letztes Jahr statt?': 1,                                                      // 41      
+    'In welcher Schweizer Stadt hat Energy KEIN Radiostudio?': 3,                                           // 39
+    'Welcher Act stand schon einmal auf der Energy Bühne?': 1,                                              // 40
+    'Wann fand das Energy Air letztes Jahr statt?': 1,                                                      // 41
     'In welchem Monat findet das Energy Air jeweils statt?': 2,                                             // 42
     'Ab wann darf man, ohne eine erwachsene Begleitperson, am Energy Air teilnehmen?': 1,                   // 43
     'Wie oft pro Jahr findet das Energy Air statt': 3,                                                      // 44
@@ -74,7 +104,7 @@ function getAnswer(question){
     }
 
     // if answer not found output question to console.log and return first result
-    console.log('\x1b[36m%s\x1b[0m', question); 
+    console.log('\x1b[36m%s\x1b[0m', question);
     //console.log('!->'+question+'<-!');
     return 0;
 }
@@ -84,7 +114,7 @@ async function solveQuestion(){
     while ( await client.isExisting('form.question h1')) {
         //console.log('question start');
         await client
-            .getText('form.question h1').then(async function (text) { 
+            .getText('form.question h1').then(async function (text) {
                 //console.log('||' + text + '||');
 
                 switch(getAnswer(text)){
@@ -116,7 +146,7 @@ async function hopeAndPray(){
     await client
         .click('button.round-button-circle')
         .click('#wingame div.col-xs-4:nth-child(4)');
-    
+
     if ( await client.isExisting('h1=Das war das falsche Logo, knapp daneben! Versuche es erneut!')){
         //await client.end();
         console.log('Restart.... (we lost)');
