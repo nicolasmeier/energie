@@ -21,7 +21,7 @@ var novQuestionsEnum = {
     'Wie viele Tickets werden jeweils für die Energy Star Night verlost?': '13000',
     'Wie hiess die Energy Star Night bevor sie im Jahr 2016 umbenannt wurde?': 'Energy Stars For Free',
     'Was zeichnet Flash aus?': 'Er ist schnell wie der Blitz',
-    'Welcher Preis wird an der Energy Star Night vergeben?': 'Best Swiss Music Award',
+    'Welcher Preis wird an der Energy Star Night vergeben?': 'Energy Music Award',
     'Sunrise Avenue wird das Publikum an der diesjährigen Energy Star Night mitreissen. In welchen Jahren performten sie bereits an der Energy Star Night?': '2006 und 2011',
     'Was zeichnet Cyborg aus?': 'Er hat einen mechanisch verbesserten Körper',
     'Wie viele Acts standen 2016 auf der Energy Star Night Bühne?': '15',
