@@ -19,8 +19,8 @@
   "author": "Nicolas Meier",
   "license": "Apache-2.0",
   "dependencies": {
-    "prompt": "^1.1.0",
-    "webdriverio": "^7.9.0"
+    "prompt": "^1.2.0",
+    "webdriverio": "^7.16.3"
   },
   "devDependencies": {
     "wdio-mocha-framework": "^0.5.11"
